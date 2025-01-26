@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Price</title>
+        <link rel="shortcut icon" href="car.png" type="image/x-icon">
+        <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family:sans-serif
+        }
+        form {
+            background-color:#ADD8E6;
+            padding: 10px;
+            color: black;
+
+        }
+        .container .box {
+            display: grid;
+            grid-template-columns:1fr 1fr 1fr 1fr;
+
+            margin: 20px;
+
+
+        }
+        .container .box select {
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+        }
+       .contai .box{
+        display: grid;
+        margin: 20px;
+
+       }
+       .contai .box #slider {
+
+            display: grid;
+            grid-template-columns:1fr 1fr 1fr 1fr;
+       }
+
+       .header {
+            text-align: center;
+            padding: 20px;
+            background:	#00bfff;
+            color: whitesmoke;
+       }
+       .input {
+            text-align: center;
+
+            margin: 10px;
+       }
+       .input input {
+            padding: 10px;
+            margin: 10px;
+
+            outline: none;
+
+       }
+
+    </style>
+    </head>
+    <body>
+        <h1 class="header">Feature Price Analyzer</h1>
+        <br>
+        <br>
+        <h3 style="text-align:center ;">{{ prediction_text }}</h3>
+
+        <br>
+        <br>
+            <form action="{{ url_for('attribute_input') }}" method="post">
+
+            <div class="container">
+                <div class="box">
+
+                    <label>Fuel Type</label>
+                    <select name="Fuel_Type" id="Fuel_Type">
+                        <option value="--">Select The Items</option>
+                        <option value="gas">Gas</option>
+                        <option value="Diesel">Diesel</option>
+                    </select>
+                </div>
+                <div class="box">
+                    <label>Aspration</label>
+                    <select name="Aspration" id="Aspration">
+                        <option value="--">Select The Items</option>
+                        <option value="Standard">Standard</option>
+                        <option value="turbo">Turbo</option>
+                    </select>
+                </div>
+
+
+                <div class="box">
+                    <label>Carbody</label>
+                    <select name="Carbody" id="Carbody">
+                        <option value="--">Select The Items</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="Wagon">Wagon</option>
+                        <option value="Hardtop">Hardtop</option>
+                        <option value="Convertible">Convertible</option>
+
+                    </select>
+                </div>
+
+
+                <div class="box">
+                    <label>DriveWheel</label>
+                    <select name="DriveWheel" id="DriveWheel">
+                        <option value="--">Select The Items</option>
+                        <option value="fwd">FWD</option>
+                        <option value="rwd">RWD</option>
+                        <option value="4wd">4WD</option>
+
+                    </select>
+                </div>
+
+
+                <div class="box">
+                    <label>Engine type</label>
+                    <select name="Engine type" id="Engine type">
+                        <option value="--">Select The Items</option>
+                        <option value="ohc">OHC</option>
+                        <option value="ohcf">OHCF</option>
+                        <option value="ohcv">OHCV</option>
+                        <option value="dohc">DOHC</option>
+                        <option value="rotor">ROTOR</option>
+                        <option value="dohcv">DOHCV</option>
+                        <option value="dohcv">L</option>
+
+                    </select>
+                </div>
+
+
+                <div class="box">
+                    <label>Fuel System</label>
+                    <select name="Fuel System" id="Fuel System">
+                        <option value="--">Select The Items</option>
+                        <option value="mpfi">MPFI</option>
+                        <option value="2bbl">2BBL</option>
+                        <option value="idi">IDI</option>
+                        <option value="1bbl">1BBL</option>
+                        <option value="spdi">SPDI</option>
+                        <option value="4bbl">4BBL</option>
+                        <option value="mfi">MFI</option>
+                        <option value="spfi">SPFI</option>
+                    </select>
+                </div>
+
+
+                <div class="box">
+                    <label>Cylinder Number</label>
+                    <select name="Cylinder Number" id="Cylinder Number">
+                        <option value="--">Select The Items</option>
+                        <option value="2">2</option>
+                        <option value="4">4</option>
+                        <option value="6">6</option>
+                        <option value="8">8</option>
+                        <option value="12">12</option>
+
+                    </select>
+                </div>
+            </div>
+<!-- Range Slider -->
+            <div class="contai">
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Wheel Base</label>
+                        <input class="bar" name="Wheel Base" type="range" id="rangeinput" min="80" max="125" value="1"
+                        step="5"
+                        onchange="rangevalue.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue">80</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Car lenght</label>
+                        <input class="bar" name="Car lenght" type="range" id="rangeinput2" min="140" max="210" value="1"
+                        step="10"
+                        onchange="rangevalue2.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue2">140</output>
+                    </div>
+                </div>
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Card Width</label>
+                        <input class="bar" name="Card Width" type="range" id="rangeinput" min="60" max="75" value="1"
+                        step="5"
+                        onchange="rangevalue3.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue3">60</output>
+                    </div>
+                </div>
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Curb wight</label>
+                        <input class="bar" type="range" name="Curb wight" id="rangeinput" min="1000" max="6000" value="1"
+                        step="1000"
+                        onchange="rangevalue4.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue4">10000</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Engine Size</label>
+                        <input class="bar" name="Engine Size" type="range" id="rangeinput" min="40" max="400" value="1"
+                        step="5"
+                        onchange="rangevalue5.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue5">40</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Bore ratio</label>
+                        <input class="bar" name="Bore ratio" type="range" id="rangeinput" min="2" max="5" value="1"
+                        step="0.5"
+                        onchange="rangevalue6.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue6">2</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Stroke</label>
+                        <input class="bar" name="Stroke" type="range" id="rangeinput" min="2" max="5" value="1"
+                        step="0.1"
+                        onchange="rangevalue6.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue6">2</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Compression Ratio</label>
+                        <input class="bar" name="Compression Ratio" type="range" id="rangeinput" min="4" max="50" value="1"
+                        step="1"
+                        onchange="rangevalue6.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue6">2</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Peak Rpm</label>
+                        <input class="bar" name="Peak Rpm" type="range" id="rangeinput" min="3000" max="8000" value="1"
+                        step="100"
+                        onchange="rangevalue6.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue6">2</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">Horse Power</label>
+                        <input class="bar" name="Horse Power" type="range" id="rangeinput" min="40" max="500" value="1"
+                        step="10"
+                        onchange="rangevalue8.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue8">40</output>
+                    </div>
+                </div>
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">City Mpg</label>
+                        <input class="bar" name="City Mpg" type="range" id="rangeinput" min="10" max="60" value="1"
+                        step="5"
+                        onchange="rangevalue9.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue9">10</output>
+                    </div>
+                </div>
+
+                <div  class="box">
+                    <div id="slider">
+                        <label for="">HighWay Mpg</label>
+                        <input class="bar" name="HighWay Mpg" type="range" id="rangeinput" min="10" max="60" value="1"
+                        step="5"
+                        onchange="rangevalue11.value=value"/>
+                        <span class="highlight"></span>
+                        <output id="rangevalue11">10</output>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="input">
+                <input type="submit" value="Submit">
+                <input type="reset">
+            </div>
+
+
+        </form>
+
+
+
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
