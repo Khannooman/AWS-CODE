@@ -22,7 +22,7 @@ source venv/bin/activate
 
 clone git repository
 ```bash
-https://github.com/Khannooman/AWS-CODE.git
+git clone https://github.com/Khannooman/AWS-CODE.git
 ```
 go inside repositry
 ```bash
@@ -30,7 +30,7 @@ cd AWS-CODE
 ```
 Install the dependencies
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
  
 Verify if it works by running 
@@ -93,7 +93,7 @@ Finally, we set up Nginx as a reverse-proxy to accept the requests from the user
 
 Install Nginx 
 ```bash
-sudo apt-get nginx
+sudo apt-get install nginx
 ```
 Start the Nginx service and go to the Public IP address of your EC2 on the browser to see the default nginx landing page
 ```bash
